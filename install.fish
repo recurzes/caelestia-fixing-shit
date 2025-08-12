@@ -117,7 +117,6 @@ if ! set -q _flag_noconfirm
     end
 end
 
-
 # Install AUR helper if not already installed
 if ! pacman -Q $aur_helper &> /dev/null
     log "$aur_helper not installed. Installing..."
@@ -139,6 +138,7 @@ end
 # Install metapackage for deps
 log 'Installing metapackage...'
 $aur_helper -S --needed caelestia-meta $noconfirm
+$aur_helper -S caelestia-cli-git
 
 # Cd into dir
 cd (dirname (status filename)) || exit 1
